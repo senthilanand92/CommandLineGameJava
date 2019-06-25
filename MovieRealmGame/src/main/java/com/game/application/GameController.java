@@ -1,6 +1,5 @@
 package com.game.application;
 
-import java.util.List;
 
 import com.game.application.controller.GameOperationExecutor;
 import com.game.application.controller.operation.GameControllerOperation;
@@ -9,14 +8,11 @@ import com.game.application.controller.operation.NewGameOperation;
 import com.game.application.controller.operation.SaveGameOperation;
 import com.game.application.model.Player;
 
-public class GameController implements GameConstants {
+public abstract class GameController implements GameConstants {
 
 	private GameOperationExecutor executor = new GameOperationExecutor();
 	GameLauncher launcher = new GameLauncher(); 
 
-	public void printStats(Player player){
-		System.out.println("Stats-> Health:"+player.getHealth() +" Strength:"+player.getStrength()+" Experience Points:"+player.getExperience());
-	}
 
 	public void saveGame(Player player) {
 		GameControllerOperation saveGameoperation = new SaveGameOperation();

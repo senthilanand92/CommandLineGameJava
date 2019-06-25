@@ -27,6 +27,7 @@ public class LoadGamesOperation implements GameControllerOperation,GameConstants
 				
 				System.out.println(i+":  "+memento.getTimeStamp()+":"+memento.getPlayer().getCharacter().getName()+
 						":"+memento.getSaveGameName());
+				i++;
 			}
 			
 			System.out.println("Choose the Sno to load:");

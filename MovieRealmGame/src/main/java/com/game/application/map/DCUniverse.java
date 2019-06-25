@@ -1,12 +1,6 @@
 package com.game.application.map;
 
-public class MarvelUniverse implements NavigableGameMap,MapElements {
-	static{
-		String A="Avengers Headquarters";
-		String I="Iron Mans Party";
-		String H="Hulks Restaurant";
-		String C="Captain America's Gym";
-	}
+public class DCUniverse implements NavigableGameMap,MapElements {
 	
 	private Integer currentPositionX=7;
 	private Integer currentPositionY=10;
@@ -14,12 +8,12 @@ public class MarvelUniverse implements NavigableGameMap,MapElements {
 	
 	public  String[][] marvelMap= {
 			{SIDEWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,SIDEWALL},
-			{SIDEWALL,PATH,"H",PATH,PATH,PATH,PATH,"I",SIDEWALL},
+			{SIDEWALL,PATH,"B",PATH,PATH,PATH,PATH,"W",SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
-			{SIDEWALL,PATH,"A",PATH,PATH,PATH,PATH,"C",SIDEWALL},
+			{SIDEWALL,PATH,"S",PATH,PATH,PATH,PATH,"J",SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
 			{SIDEWALL,PATH,PATH,PATH,PATH,PATH,PATH,PATH,SIDEWALL},
@@ -29,14 +23,14 @@ public class MarvelUniverse implements NavigableGameMap,MapElements {
 	
 	
 	private String getMessage(String position,String move){
-		 if(position.equalsIgnoreCase("A"))
-			return "You have reached Avengers Headquarters";
-		else if(position.equalsIgnoreCase("I"))
-			return "You have reached Iron Mans Party";
-		else if(position.equalsIgnoreCase("H"))
-			return "You have reached Hulks Restaurant";
+		 if(position.equalsIgnoreCase("B"))
+			return "You have reached BatCave";
+		else if(position.equalsIgnoreCase("S"))
+			return "You have found Shazam's lair";
+		else if(position.equalsIgnoreCase("J"))
+			return "You have reached Justice League Headquarters";
 		else if(position.equalsIgnoreCase("C"))
-			return "You have reached Captain America's Gym";
+			return "You have reached Wonder Woman's Island";
 		else if(position.equalsIgnoreCase(EXIT))
 			return EXIT;
 		return  "Moved "+move;

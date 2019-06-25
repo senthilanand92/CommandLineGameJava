@@ -16,6 +16,7 @@ public class Player implements Serializable {
 	private Long experience;
 	private Long Health;
 	private Long Strength;
+	private Long fightHealth;
 	
 	
 	public Player(PlayerCharacter pCharacter) {
@@ -44,13 +45,37 @@ public class Player implements Serializable {
 	public void setStrength(Long strength) {
 		Strength = strength;
 	}
-
+	
+	public void addExperiencePoints(Long expPoints){
+		this.experience+=expPoints;
+		
+	}
+	public void resetHealth(){
+		this.fightHealth=Health;
+	}
 
 	@Override
 	public String toString() {
 		return "Player [character=" + character + ", experience=" + experience + ", Health=" + Health + ", Strength="
 				+ Strength + "]";
 	}
+	
+	public Long getFightHealth() {
+		return fightHealth;
+	}
+
+
+	public void setFightHealth(Long fightHealth) {
+		this.fightHealth = fightHealth;
+	}
+	
+	public void printStats(boolean isFightMode){
+		Long health=isFightMode?fightHealth:Health;
+		System.out.println("Player:"+character.getName()+" Stats-> Health:"+
+				health+" Strength:"+Strength+" Experience Points:"+experience);
+	}
+	
+
 	
 
 }

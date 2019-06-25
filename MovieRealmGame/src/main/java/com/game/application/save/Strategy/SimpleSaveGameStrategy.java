@@ -38,17 +38,17 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
         catch(EOFException e){
         	System.out.println("File read Complete");
         }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        catch (FileNotFoundException exception) {
+        	exception.printStackTrace();
+        } catch (IOException exception) {
+        	exception.printStackTrace();
             try {
                 if(objectInputStream != null) objectInputStream.close();
-            } catch (Exception ex){
-                 
+            } catch (Exception exceptionsStream){
+            	exceptionsStream.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
-			e.printStackTrace();
+        } catch (ClassNotFoundException exception) {
+        	exception.printStackTrace();
 		}
          
 		return savedGamesList;
@@ -56,17 +56,17 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
 
 	public boolean saveGame(GameStateMemento memento) {
 		
-		 OutputStream ops = null;
+		 OutputStream outputStream = null;
 	     ObjectOutputStream objOutputStream = null;
 	     try {
 	            if(checkForFileExists())
 	            {
-	            	 ops = new FileOutputStream(saveFileName,true);
-	            	 objOutputStream= new AppendingObjectOutputStream(ops);	
+	            	outputStream = new FileOutputStream(saveFileName,true);
+	            	 objOutputStream= new AppendingObjectOutputStream(outputStream);	
 	            }
 	            else{
-	            	 ops = new FileOutputStream(saveFileName,true);
-	            	 objOutputStream = new ObjectOutputStream(ops);
+	            	outputStream = new FileOutputStream(saveFileName,true);
+	            	 objOutputStream = new ObjectOutputStream(outputStream);
 	            }
 	            objOutputStream.writeObject(memento);
 	            objOutputStream.flush();
@@ -77,8 +77,8 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
 	        } finally{
 	            try{
 	                if(objOutputStream != null) objOutputStream.close();
-	            } catch (Exception ex){
-	                 
+	            } catch (Exception exception){
+	            	exception.printStackTrace();
 	            }
 	        }
 		return false;
@@ -104,9 +104,6 @@ class AppendingObjectOutputStream extends ObjectOutputStream {
 
 	  @Override
 	  protected void writeStreamHeader() throws IOException {
-	    // do not write a header, but reset:
-	    // this line added after another question
-	    // showed a problem with the original
 	    reset();
 	  }
 
