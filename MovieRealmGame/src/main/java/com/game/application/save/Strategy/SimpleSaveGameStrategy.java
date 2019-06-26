@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.game.application.GameConstants;
+import com.game.application.constants.GameConstants;
 import com.game.application.model.GameStateMemento;
 
 public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
@@ -24,7 +24,8 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
         ObjectInputStream objectInputStream = null;
         boolean readMore = true;
         try{
-        	fileInputStream = new FileInputStream(saveFileName);
+        	if(checkForFileExists()){
+        	fileInputStream = new FileInputStream(utility.getSaveGameFileName());
             objectInputStream = new ObjectInputStream(fileInputStream);
            while(readMore){
         	   GameStateMemento savedGameMemento = (GameStateMemento) objectInputStream.readObject();
@@ -34,6 +35,7 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
               else
             	  readMore = false;
            }
+        	}
         }
         catch(EOFException e){
         	System.out.println("File read Complete");
@@ -61,11 +63,11 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
 	     try {
 	            if(checkForFileExists())
 	            {
-	            	outputStream = new FileOutputStream(saveFileName,true);
+	            	outputStream = new FileOutputStream(utility.getSaveGameFileName(),true);
 	            	 objOutputStream= new AppendingObjectOutputStream(outputStream);	
 	            }
 	            else{
-	            	outputStream = new FileOutputStream(saveFileName,true);
+	            	outputStream = new FileOutputStream(utility.getSaveGameFileName(),true);
 	            	 objOutputStream = new ObjectOutputStream(outputStream);
 	            }
 	            objOutputStream.writeObject(memento);
@@ -86,7 +88,7 @@ public class SimpleSaveGameStrategy implements SaveGameStrategy,GameConstants{
 	
 	private boolean checkForFileExists(){
 		
-		File fileObj = new File(saveFileName);
+		File fileObj = new File(utility.getSaveGameFileName());
 		
 		if(fileObj.exists())
 			return true;

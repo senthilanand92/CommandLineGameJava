@@ -9,6 +9,8 @@ public class IOUtility {
 	
 	private static IOUtility instance= null;
 	
+	private String SAVE_GAME_FILE_NAME="MovieRealm-SavedGamesFile.txt";
+	
 	public static String OPERATION_SEPERATOR="--------------------";
 	
 	Scanner input= null;
@@ -37,9 +39,9 @@ public class IOUtility {
 	}
 	
 	public void getAnyInput() {
+		printOutput("Press any Key to continue...");
 		try{
-			input.reset();
-			String temp=input.nextLine();
+			System.in.read();
 		}
 		catch(Throwable t){
 			printOutput("An Error has occured");
@@ -85,6 +87,11 @@ public  void printOutputWithoutNewLine(String msg){
 		}
 		printOutput("]");
 		
+	}
+	
+	//Move to a system property
+	public String getSaveGameFileName(){
+		return SAVE_GAME_FILE_NAME;
 	}
 	
 	

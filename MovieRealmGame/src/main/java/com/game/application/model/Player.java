@@ -50,6 +50,57 @@ public class Player implements Serializable {
 		this.experience+=expPoints;
 		
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Health == null) ? 0 : Health.hashCode());
+		result = prime * result + ((Strength == null) ? 0 : Strength.hashCode());
+		result = prime * result + ((character == null) ? 0 : character.hashCode());
+		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
+		result = prime * result + ((fightHealth == null) ? 0 : fightHealth.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Player other = (Player) obj;
+		if (Health == null) {
+			if (other.Health != null)
+				return false;
+		} else if (!Health.equals(other.Health))
+			return false;
+		if (Strength == null) {
+			if (other.Strength != null)
+				return false;
+		} else if (!Strength.equals(other.Strength))
+			return false;
+		if (character == null) {
+			if (other.character != null)
+				return false;
+		} else if (!character.equals(other.character))
+			return false;
+		if (experience == null) {
+			if (other.experience != null)
+				return false;
+		} else if (!experience.equals(other.experience))
+			return false;
+		if (fightHealth == null) {
+			if (other.fightHealth != null)
+				return false;
+		} else if (!fightHealth.equals(other.fightHealth))
+			return false;
+		return true;
+	}
+
+
 	public void resetHealth(){
 		this.fightHealth=Health;
 	}

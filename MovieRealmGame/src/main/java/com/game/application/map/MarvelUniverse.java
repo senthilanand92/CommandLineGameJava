@@ -1,11 +1,15 @@
 package com.game.application.map;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MarvelUniverse implements NavigableGameMap,MapElements {
+	private static Map<String,String> specialPlacesMap= new HashMap<String,String>();
 	static{
-		String A="Avengers Headquarters";
-		String I="Iron Mans Party";
-		String H="Hulks Restaurant";
-		String C="Captain America's Gym";
+		specialPlacesMap.put("A", "You have reached Avengers Headquarters");
+		specialPlacesMap.put("I", "You have reached Iron Mans Party");
+		specialPlacesMap.put("H", "You have reached Hulks Restaurant");
+		specialPlacesMap.put("C", "You have reached Captain America's Gym");
 	}
 	
 	private Integer currentPositionX=7;
@@ -29,16 +33,10 @@ public class MarvelUniverse implements NavigableGameMap,MapElements {
 	
 	
 	private String getMessage(String position,String move){
-		 if(position.equalsIgnoreCase("A"))
-			return "You have reached Avengers Headquarters";
-		else if(position.equalsIgnoreCase("I"))
-			return "You have reached Iron Mans Party";
-		else if(position.equalsIgnoreCase("H"))
-			return "You have reached Hulks Restaurant";
-		else if(position.equalsIgnoreCase("C"))
-			return "You have reached Captain America's Gym";
-		else if(position.equalsIgnoreCase(EXIT))
-			return EXIT;
+		 if(position.equalsIgnoreCase(EXIT))
+			 return EXIT;
+		else if(specialPlacesMap.containsKey(position))
+			return specialPlacesMap.get(position);
 		return  "Moved "+move;
 	}
 

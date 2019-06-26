@@ -1,6 +1,17 @@
 package com.game.application.map;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DCUniverse implements NavigableGameMap,MapElements {
+	
+	private static Map<String,String> specialPlacesMap= new HashMap<String,String>();
+	static{
+		specialPlacesMap.put("B", "You have reached BatCave");
+		specialPlacesMap.put("S", "You have found Shazam's lair");
+		specialPlacesMap.put("J", "You have reached Justice League Headquarters");
+		specialPlacesMap.put("C", "You have reached Wonder Woman's Island");
+	}
 	
 	private Integer currentPositionX=7;
 	private Integer currentPositionY=10;
@@ -23,16 +34,10 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 	
 	
 	private String getMessage(String position,String move){
-		 if(position.equalsIgnoreCase("B"))
-			return "You have reached BatCave";
-		else if(position.equalsIgnoreCase("S"))
-			return "You have found Shazam's lair";
-		else if(position.equalsIgnoreCase("J"))
-			return "You have reached Justice League Headquarters";
-		else if(position.equalsIgnoreCase("C"))
-			return "You have reached Wonder Woman's Island";
-		else if(position.equalsIgnoreCase(EXIT))
-			return EXIT;
+		 if(position.equalsIgnoreCase(EXIT))
+			 return EXIT;
+		else if(specialPlacesMap.containsKey(position))
+			return specialPlacesMap.get(position);
 		return  "Moved "+move;
 	}
 

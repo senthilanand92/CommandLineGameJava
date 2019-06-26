@@ -2,15 +2,19 @@ package com.game.application.fight.strategy;
 
 import java.util.Random;
 
-import com.game.application.GameConstants;
+import com.game.application.constants.GameConstants;
 import com.game.application.model.Enemy;
 import com.game.application.model.Player;
-import com.game.application.utility.IOUtility;
 
 public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 
-	Random  random = new Random();
-	IOUtility utility=IOUtility.getInstance();
+	private Random random;
+	
+	RandomNoFightStrategy(Random random)
+	{
+		this.random=random;
+	}
+	
 
 	public String attack(Player player, Enemy enemy,Object parameter) {
 		String output="Attack was defended by enemy";
@@ -22,7 +26,7 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 			utility.printOutput("Choose a no between 1 to 6.. :");
 		Integer userInp=utility.getIntegerInput();
 		Integer randomNo=random.nextInt(7);
-		System.out.println("The no was:"+randomNo);
+		utility.printOutput("The no was:"+randomNo);
 		boolean isAttackSuccessful=false;
 		if(randomNo.equals(userInp)){
 			isAttackSuccessful=true;
@@ -43,13 +47,13 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 	}
 
 	public String defend(Player player, Enemy enemy,Object parameter) {
-		String output="You were Attacked by enemy and lose"+enemy.getStrength()+" health";
+		String output="You were Attacked by enemy and lose "+enemy.getStrength()+" health";
 		boolean isRetry=false;
 		do{
 			isRetry=false;
 		try{
 		utility.printOutput("You are defending an attack by enemy whose strength is "+enemy.getStrength());
-		utility.printOutput("Choose a no between 1 to 6.. :");
+		utility.printOutput("Choose a no between 0 to 6.. :");
 		Integer userInp=utility.getIntegerInput();
 		Integer randomNo=random.nextInt(7);
 		boolean isDefenceSuccessful=false;
@@ -69,5 +73,15 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 		}while(isRetry);
 		return output;
 	}
+	
+	public Random getRandom() {
+		return random;
+	}
+
+
+	public void setRandom(Random random) {
+		this.random = random;
+	}
+
 
 }
