@@ -46,8 +46,9 @@ public class FightController implements GameConstants,CommonController {
 	// Player has won and exp points gets added
 	private void handleWin(Player player,Enemy enemy){
 		utility.printOutput("You have won the fight"+ player.getCharacter().getTitle()+" "+ player.getCharacter().getName()
-				+".\n Awesome. Adding exp points:"+player.getExperience());
+				+".\n Awesome. You have been awarded "+enemy.getExpPoints()+"  exp points.");
 		player.addExperiencePoints(enemy.getExpPoints());
+		utility.printOutput("Your new total Exp points:"+player.getExperience());
 		utility.printOutput("Exited");
 		utility.getAnyInput();
 		

@@ -37,7 +37,7 @@ public class MasterController extends GameController{
 			isRetry=false;
 			try{
 				utility.printSeperator();
-		utility.printOutput("What do you want to do? /n");
+		utility.printOutput("What do you want to do? ");
 		utility.printCommands(startOptions);
 			utility.printOutput("Enter the command letter of the command:");
 			choice=utility.getStringInput();
