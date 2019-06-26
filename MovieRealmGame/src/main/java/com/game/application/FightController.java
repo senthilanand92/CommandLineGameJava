@@ -14,7 +14,7 @@ public class FightController extends GameController implements GameConstants {
 		this.mController= mController;
 		player.resetHealth();
 		
-	System.out.println("Welcome to Fight Mode , Win the battles to gain experience points.\n"
+	utility.printOutput("Welcome to Fight Mode , Win the battles to gain experience points.\n"
 			+ "May fates be Kinder to you");
 	
 	FightStrategy fightStrategy= new RandomNoFightStrategy();
@@ -22,45 +22,47 @@ public class FightController extends GameController implements GameConstants {
 	String result;
 	Enemy enemy =getEnemy();
 	do{
+		utility.printSeperator();
 		clearConsole();
-		System.out.println("\n\n");
 		player.printStats(true);
 		enemy.printStats();
 		result=fightStrategy.attack(player, enemy, null);
-		System.out.println("Result:"+result);
+		utility.printOutput("Result:"+result);
 		if(result.equalsIgnoreCase("won")){
 			handleWin(player,enemy);
+			break;
 		}
 		result=fightStrategy.defend(player, enemy, null);
-		System.out.println("Result:"+result);
+		utility.printOutput("Result:"+result);
 		if(result.equalsIgnoreCase("Loss")){
 			handleLoss(player,enemy);
+			break;
 		}
+		utility.printSeperator();
 	}while(true);
-	
-	
+	mController.playGame(player);
 	}
 	
 	
 	private void handleWin(Player player,Enemy enemy){
-		System.out.println("You have won the fight"+ player.getCharacter().getTitle()+" "+ player.getCharacter().getName()
+		utility.printOutput("You have won the fight"+ player.getCharacter().getTitle()+" "+ player.getCharacter().getName()
 				+".\n Awesome. Adding exp points:"+player.getExperience());
 		player.addExperiencePoints(enemy.getExpPoints());
-		System.out.println("Exited");
-		System.out.println("Say bye to leave");
-		input.next();
-		mController.playGame(player);
+		utility.printOutput("Exited");
+		utility.printOutput("Say bye to leave");
+		utility.getAnyInput();
+		
 	}
 	
 	private void handleLoss(Player player,Enemy enemy){
-		System.out.println("You have lost the fight"+ player.getCharacter().getTitle()+" "+ player.getCharacter().getName()
+		utility.printOutput("You have lost the fight"+ player.getCharacter().getTitle()+" "+ player.getCharacter().getName()
 				+".\n Better luck next time.");
-		System.out.println("Exited");
-		System.out.println("Say bye to leave");
-		input.next();
-		mController.playGame(player);
+		utility.printOutput("Exited");
+		utility.printOutput("Say bye to leave");
+		utility.getAnyInput();
 	}
 	
+	//Add a factory for enemy
 	private Enemy getEnemy(){
 		
 		Enemy enemy= new Loki();

@@ -12,6 +12,9 @@ public abstract class PlayerBuilder {
 	
 	public void createNewPlayer(PlayerCharacter pCharacter) {
 		player = new Player(pCharacter);
+		setInitialHealth();
+		setInitialStrength();
+		setInitialExperience();
     }
 	 public abstract void setInitialHealth();
 	 public abstract void setInitialStrength();

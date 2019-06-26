@@ -1,25 +1,36 @@
 package com.game.application;
 
 
+
 import com.game.application.controller.GameOperationExecutor;
 import com.game.application.controller.operation.GameControllerOperation;
 import com.game.application.controller.operation.LoadGamesOperation;
 import com.game.application.controller.operation.NewGameOperation;
 import com.game.application.controller.operation.SaveGameOperation;
 import com.game.application.model.Player;
+import com.game.application.utility.IOUtility;
 
 public abstract class GameController implements GameConstants {
 
 	private GameOperationExecutor executor = new GameOperationExecutor();
 	GameLauncher launcher = new GameLauncher(); 
+	IOUtility utility = IOUtility.getInstance();
 
 
 	public void saveGame(Player player) {
+		
 		GameControllerOperation saveGameoperation = new SaveGameOperation();
-		System.out.println("Please enter a save Game name:");
-		String saveGameName=input.next();
+		try{
+			utility.printSeperator();
+			utility.printOutput("Please enter a save Game name:");
+		String saveGameName=utility.getStringInput();
 		executor.executeOperation(saveGameoperation, player, saveGameName);
-		System.out.println("Game successfully saved");
+		utility.printOutput("Game successfully saved");
+		utility.printSeperator();
+		}
+		catch(Exception e){
+			saveGame(player);
+		}
 	}
 
 	public Player newGame() {

@@ -16,36 +16,47 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 		
 		String userInput="";
 		characterBuilder.createNewCharacter();
-		
-		System.out.println(newCharacterQuestions.get(0));
-		userInput = input.next();	
+		boolean isRetry=false;
+		PlayerBuilder builder =null;
+		do{
+			isRetry=false;
+			try{
+		utility.printOutput(newCharacterQuestions.get(0));
+		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterName(userInput);
 		
-		System.out.println(newCharacterQuestions.get(1));
-		userInput = input.next();	
+		utility.printOutput(newCharacterQuestions.get(1));
+		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterTitle(userInput);
 		
-		System.out.println(newCharacterQuestions.get(2));
-		userInput = input.next();	
+		utility.printOutput(newCharacterQuestions.get(2));
+		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterGender(userInput);
 		PlayerCharacter pCharacter = characterBuilder.getCharacter();
 		
-		System.out.println(newCharacterQuestions.get(3));
-		userInput = input.next();	
-		PlayerBuilder builder =null;
+		utility.printOutput(newCharacterQuestions.get(3));
+		userInput = utility.getStringInput();	
 		
-		if(userInput.equalsIgnoreCase("warrior")){
+		if(userInput.equalsIgnoreCase("W")){
 			builder = new WarriorBuilder();
 		}
-		else if(userInput.equalsIgnoreCase("sage")){
+		else if(userInput.equalsIgnoreCase("S")){
 			builder = new SageBuilder();
 		}
 		
-		
 		builder.createNewPlayer(pCharacter);
-		builder.setInitialHealth();
-		builder.setInitialStrength();
-		builder.setInitialExperience();
+			} catch(Exception ex){
+				isRetry=true;
+				if(null != ex.getMessage())
+				{
+				utility.printOutput(ex.getMessage());
+				}
+				else{
+					utility.printOutput("That not a valid input,Lets try again");
+				}
+					
+			}
+		}while(isRetry);
 		Player playerLocal=builder.getPlayer();
 		return playerLocal;
 	}

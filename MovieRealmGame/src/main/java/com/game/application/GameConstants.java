@@ -6,11 +6,10 @@ import java.util.Scanner;
 
 public interface GameConstants {
 	
-	Scanner input= new Scanner(System.in);
-	List<String> startOptions = Arrays.asList("New Game","Load Game","Exit");
-	List<String> newCharacterQuestions = Arrays.asList("What is your name?","What is your title","What is your Gender?","Are you a Brave Warrior or a Wise Sage(Warrior/Sage)");
-	List<String> inGameOptions=Arrays.asList("Explore","Fight","Save","Back");
-	List<String> exploreOptions=Arrays.asList("North","South","East","West","Exit","Switch");
+	List<String> startOptions = Arrays.asList("New Game(N)","Load Game(L)","Exit(E)");
+	List<String> newCharacterQuestions = Arrays.asList("What is your name?","What is your title","What is your Gender?","Are you a Brave Warrior or a Wise Sage(Warrior[W]/Sage[S])");
+	List<String> inGameOptions=Arrays.asList("Explore(E)","Fight(F)","Save(S)","Back(B)");
+	List<String> exploreOptions=Arrays.asList("North(N)","South(S)","East(E)","West(W)","Exit(E)","Switch(SW)");
 	
 	String saveFileName="MovieRealm-SavedGames.txt";
 	String newGameSaveName="NewGameCheckPoint";

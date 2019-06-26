@@ -1,12 +1,13 @@
 package com.game.application;
 
+import com.game.application.exceptions.InvalidInputException;
 import com.game.application.map.DCUniverse;
 import com.game.application.map.MapElements;
 import com.game.application.map.MarvelUniverse;
 import com.game.application.map.NavigableGameMap;
 import com.game.application.model.Player;
 
-public class ExploreController implements GameConstants,MapElements {
+public class ExploreController extends GameController implements GameConstants,MapElements {
 	
 	
 	public void exploreMap(Player player,MasterController mController ){
@@ -17,36 +18,38 @@ public class ExploreController implements GameConstants,MapElements {
 		NavigableGameMap DCUniverseMap=  new DCUniverse();
 		
 		NavigableGameMap currentMap= marvelUniverseMap;
-		while(isNotExited){
+		do{
+			try{
+				utility.printSeperator();
 			currentMap.printMap();
-			printCommands();
-			System.out.println(output);
-			System.out.println("Where to move:");
-			String choice=input.next();
-			if(choice.equalsIgnoreCase("north"))
+			utility.printCommands(exploreOptions);
+			utility.printOutput(output);
+			utility.printOutput("Where to move:");
+			String choice=utility.getStringInput();
+			if(choice.equalsIgnoreCase("N"))
 			{
 				output=currentMap.moveNorth();
 				}
-			else if(choice.equalsIgnoreCase("south"))
+			else if(choice.equalsIgnoreCase("S"))
 			{
 				output=currentMap.moveSouth();
 				}
-			else if(choice.equalsIgnoreCase("east"))
+			else if(choice.equalsIgnoreCase("E"))
 			{
 				output=currentMap.moveEast();
 				}
-			else if(choice.equalsIgnoreCase("west"))
+			else if(choice.equalsIgnoreCase("W"))
 			{
 				output=currentMap.moveWest();
 				}
-			else if(choice.equalsIgnoreCase("exit"))
+			else if(choice.equalsIgnoreCase("E"))
 			{
-				System.out.println("Exited");
-				System.out.println("Say bye to leave");
-				input.next();
+				utility.printOutput("Exited");
+				utility.printOutput("Say bye to leave");
+				utility.getAnyInput();
 				isNotExited=false;
 				}
-			else if(choice.equalsIgnoreCase("switch"))
+			else if(choice.equalsIgnoreCase("SW"))
 			{
 				if(currentMap instanceof MarvelUniverse){
 					currentMap=DCUniverseMap;
@@ -57,24 +60,21 @@ public class ExploreController implements GameConstants,MapElements {
 					output="Map Switched to Marvel Universe. Exploree!!";
 				}
 				}
+			else {
+				output="Please enter a valid command";
+			}
 			if(output.equalsIgnoreCase(EXIT)){
 				System.out.println("Exited");
 				System.out.println("Say bye to leave");
-				input.next();
+				utility.getAnyInput();
 				isNotExited=false;
 			}
+			utility.printSeperator();
+		}catch(Exception ex){
+			utility.printOutput(ex.getMessage());
 		}
-		
+		}while(isNotExited);
 		mController.playGame(player);
-	}
-	
-	private void printCommands(){
-		System.out.println("Use one of these commands :");
-		for(String Option:exploreOptions){
-			System.out.print(" ["+Option+"] ");
-		}
-		System.out.println("]");
-		
 	}
 
 }

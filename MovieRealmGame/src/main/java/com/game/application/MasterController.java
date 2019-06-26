@@ -1,6 +1,7 @@
 package com.game.application;
 
 import com.game.application.model.Player;
+import com.game.application.utility.IOUtility;
 
 public class MasterController extends GameController{
 	
@@ -23,30 +24,40 @@ public class MasterController extends GameController{
 	}
 	
 	public void showLaunchOptions(){
+		IOUtility utility=IOUtility.getInstance();
 		String choice="";
-		System.out.println("Welcome To the Movie Realm where you/n"
+		utility.printOutput("Welcome To the Movie Realm where you/n"
 				+ "can explore the marvel and DC universe.\n Fight the evil villian loki and gain exp points"
 				+"Save your progress and load it anytime");
-		
-			System.out.println("What do you want to do?/n");
-			for(String option:startOptions){
-				System.out.println(option);
-			}
-			System.out.println("Enter the first word of the command:");
-			choice=input.next();
+		boolean isRetry=false;
+		do {
+			isRetry=false;
+			try{
+				utility.printSeperator();
+		utility.printOutput("What do you want to do? /n");
+		utility.printCommands(startOptions);
+			utility.printOutput("Enter the command letter of the command:");
+			choice=utility.getStringInput();
 			
-			if(choice.equalsIgnoreCase("new")){
+			if(choice.equalsIgnoreCase("N")){
 				Player player=newGame();
 				playGame(player);
 			}
-			else if(choice.equalsIgnoreCase("load")){
+			else if(choice.equalsIgnoreCase("L")){
 				Player player=loadSavedGame();
 				if(player!=null)
 				playGame(player);
 			}
-			else if(choice == "Exit"){
-				System.out.println("Thanks for Playing");
+			else if(choice.equalsIgnoreCase("E")){
+				utility.printOutput("Thanks for Playing");
+				isRetry=false;
 			}
+			}
+			catch(Exception e){
+				utility.printOutput(e.getMessage());
+				isRetry=true;
+			}
+		}while(isRetry);
 	}
 	
 
