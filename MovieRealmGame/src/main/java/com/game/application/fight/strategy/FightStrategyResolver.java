@@ -17,7 +17,7 @@ static FightStrategyResolver instance;
 		}
 		return instance;
 	}
-	
+	// Choose the fight strategy
 	public FightStrategy getStrategy(String strategy){
 		
 		if(strategy.equalsIgnoreCase("randomno")){

@@ -2,6 +2,9 @@ package com.game.application.builder;
 
 import com.game.application.model.PlayerCharacter;
 
+
+// WIll be more useful if the code is growing to complex characters as then construtors with mutiple fields
+// will be more complex to handle
 public abstract class CharacterBuilder {
 	
 	protected PlayerCharacter pCharacter;
@@ -14,7 +17,7 @@ public abstract class CharacterBuilder {
 		this.pCharacter= new PlayerCharacter();
 	}
 	
-	public PlayerCharacter getCharacter(){
+	public PlayerCharacter buildCharacter(){
 		return pCharacter;
 	}
 	

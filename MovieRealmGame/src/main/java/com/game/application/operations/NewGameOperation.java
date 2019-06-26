@@ -12,6 +12,8 @@ import com.game.application.model.PlayerCharacter;
 public class NewGameOperation implements GameControllerOperation, GameConstants{
 
 	public Player execute(Player player,Object parameter) {
+		
+		// Create a new Character
 		CharacterBuilder characterBuilder = new SimpleCharacterBuilder();
 		
 		String userInput="";
@@ -32,20 +34,26 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 		utility.printOutput(newCharacterQuestions.get(2));
 		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterGender(userInput);
-		PlayerCharacter pCharacter = characterBuilder.getCharacter();
+		PlayerCharacter pCharacter = characterBuilder.buildCharacter();
 		
 		utility.printOutput(newCharacterQuestions.get(3));
 		userInput = utility.getStringInput();	
-		
+		// Warrior chosen
 		if(userInput.equalsIgnoreCase("W")){
 			builder = new WarriorBuilder();
 		}
+		// Sage chosen
 		else if(userInput.equalsIgnoreCase("S")){
 			builder = new SageBuilder();
 		}
-		
+		else{
+			// Default warrior chosen
+			builder = new WarriorBuilder();
+		}
+		// Create a new player
 		builder.createNewPlayer(pCharacter);
 			} catch(Exception ex){
+				// Some validation stuff
 				isRetry=true;
 				if(null != ex.getMessage())
 				{

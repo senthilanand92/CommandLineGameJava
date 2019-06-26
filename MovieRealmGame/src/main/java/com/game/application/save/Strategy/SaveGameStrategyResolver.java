@@ -16,7 +16,7 @@ public class SaveGameStrategyResolver {
 	}
 	
 	public SaveGameStrategy getStrategy(String strategy){
-		
+		// Choose the  strategy to save the game 
 		if(strategy.equalsIgnoreCase("Simple")){
 			return new SimpleSaveGameStrategy();
 		}

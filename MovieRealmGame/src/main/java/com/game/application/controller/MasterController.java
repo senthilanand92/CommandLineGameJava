@@ -26,6 +26,7 @@ public class MasterController extends GameController{
 	}
 	
 	public void showLaunchOptions(){
+		// Show all the options 
 		IOUtility utility=IOUtility.getInstance();
 		String choice="";
 		utility.printOutput("Welcome To the Movie Realm where you/n"
@@ -40,11 +41,12 @@ public class MasterController extends GameController{
 		utility.printCommands(startOptions);
 			utility.printOutput("Enter the command letter of the command:");
 			choice=utility.getStringInput();
-			
+			// New Game
 			if(choice.equalsIgnoreCase("N")){
 				Player player=newGame();
 				playGame(player);
 			}
+			// Load game
 			else if(choice.equalsIgnoreCase("L")){
 				Player player=loadSavedGame();
 				if(player!=null)
@@ -53,6 +55,8 @@ public class MasterController extends GameController{
 					isRetry=true;
 				}
 			}
+			
+			// Exit game
 			else if(choice.equalsIgnoreCase("E")){
 				utility.printOutput("Thanks for Playing");
 				isRetry=false;

@@ -7,16 +7,19 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 	
 	private static Map<String,String> specialPlacesMap= new HashMap<String,String>();
 	static{
+		// Special places in the map
 		specialPlacesMap.put("B", "You have reached BatCave");
 		specialPlacesMap.put("S", "You have found Shazam's lair");
 		specialPlacesMap.put("J", "You have reached Justice League Headquarters");
 		specialPlacesMap.put("C", "You have reached Wonder Woman's Island");
 	}
-	
+	// Player start postition in the map , updated as player moves around
 	private Integer currentPositionX=7;
 	private Integer currentPositionY=10;
+	// used to move around the map
 	String prevPlace=PATH;
 	
+	// The map in ascii format
 	public  String[][] marvelMap= {
 			{SIDEWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,SIDEWALL},
 			{SIDEWALL,PATH,"B",PATH,PATH,PATH,PATH,"W",SIDEWALL},
@@ -32,7 +35,7 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 			{SIDEWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,LATERALWALL,SIDEWALL}	
 	};
 	
-	
+	// Print message as to what happened, if you hit a wall, moved in direction or visited a special place or just exited
 	private String getMessage(String position,String move){
 		 if(position.equalsIgnoreCase(EXIT))
 			 return EXIT;
@@ -40,7 +43,7 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 			return specialPlacesMap.get(position);
 		return  "Moved "+move;
 	}
-
+	// Method to move north in map
 	public String moveNorth() {
 		if((marvelMap[currentPositionY-1][currentPositionX])==LATERALWALL )
 			return "Cannot move as wall is there";
@@ -51,7 +54,7 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 		
 		return getMessage(prevPlace,"North");
 	}
-
+	//Method to move south
 	public String moveSouth() {
 		if((marvelMap[currentPositionY+1][currentPositionX])==LATERALWALL )
 			return "Cannot move as wall is there";
@@ -62,7 +65,7 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 		
 		return getMessage(prevPlace,"South");
 	}
-
+	// method to move east
 	public String moveEast() {
 		if((marvelMap[currentPositionY][currentPositionX+1])==SIDEWALL )
 			return "Cannot move as wall is there";
@@ -73,7 +76,7 @@ public class DCUniverse implements NavigableGameMap,MapElements {
 		
 		return getMessage(prevPlace,"East");
 	}
-
+	// method to move west
 	public String moveWest() {
 		if((marvelMap[currentPositionY][currentPositionX-1])==SIDEWALL )
 			return "Cannot move as wall is there";

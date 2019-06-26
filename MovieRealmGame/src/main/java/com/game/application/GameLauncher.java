@@ -15,6 +15,8 @@ public class GameLauncher  implements GameConstants {
 		
 	}
 	public  void startGame(){
+		
+		// launch the game
 		controller.showLaunchOptions();
 	}
 	

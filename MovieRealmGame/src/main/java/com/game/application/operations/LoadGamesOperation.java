@@ -14,15 +14,19 @@ public class LoadGamesOperation implements GameControllerOperation,GameConstants
 	
 	
 	public Player execute(Player player, Object parameter) {
+		
+		// Choose the strategy to load Game, can be replaced to use DB or JSOn based load
 		SaveGameStrategy saveGameStrategy = saveGameStrategyResolver.getStrategy("Simple");
 		Player chosenLoadgame=null;
-		List<GameStateMemento> mementoList=saveGameStrategy.loadSavedGamesList();
 		
+		// retrive the memento list
+		List<GameStateMemento> mementoList=saveGameStrategy.loadSavedGamesList();
+		// if none found then exit
 		if(mementoList == null || mementoList.isEmpty()){
 			utility.printOutput("No saved Games found");
 			utility.getAnyInput();
 		}
-		
+		// print list and as user to choose
 		else{
 			boolean isRetry=false;
 			do{
@@ -40,11 +44,12 @@ public class LoadGamesOperation implements GameControllerOperation,GameConstants
 			
 			utility.printOutput("Choose the Sno to load(Input should be a number):");
 			int choice = utility.getIntegerInput();
+			// Only chose a s no that is available
 			if(choice >mementoList.size() || choice<=0 ){
 				throw new InvalidInputException("Please choose a value between 1 to "+mementoList.size() );
 			}
 			utility.printSeperator();
-			
+			// Load the game and return game
 			chosenLoadgame=mementoList.get(choice-1).getPlayer();
 			} catch(Exception ex){
 				isRetry=true;
