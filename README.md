@@ -6,6 +6,11 @@ Welcome to the movie realm command line game where you can
 <Br/>4) Save your progress and Load it up whenever you get the superhero craze.
 
 # Instructions - How To Run
+<Br/>Using Executable
+<Br/>1) Windows - Run the Executable/runGame.bat
+<Br/>2) Linux - Run the Executable/runGame.sh
+
+<Br/>Using JAR
 <Br/>1) Get the Jar from the target folder in GIT or build using the maven.
 <Br/>2) Run using Java -jar (jarname)
 
@@ -72,6 +77,8 @@ Welcome to the movie realm command line game where you can
 
 <Br/> Junits are fully built for all the functionality- It is at a healthy 80%
 <Br/> Code Comments are added whereever possbile to be self explanatory.
+
+Common Design Patterns used - Builder, Controller, Strategy , Memento
 
 <Br/> Dependencies used,
 <Br/> 1) powermock-module-junit4 - Junit- Static method mocking.
