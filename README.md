@@ -1,15 +1,15 @@
 # CommandLineGameJava - Movie Realm
 Welcome to the movie realm command line game where you can 
-1)Create your own character
-2)Explore the worlds of Marven and DC universe tracked in a map.
-3)Fight the evil villian Loki
-4) Save your progress and Load it up whenever you get the superhero craze.
+<Br/>1)Create your own character
+<Br/>2)Explore the worlds of Marven and DC universe tracked in a map.
+<Br/>3)Fight the evil villian Loki
+<Br/>4) Save your progress and Load it up whenever you get the superhero craze.
 
 # Instructions - How To Run
-1) Get the Jar from the target folder in GIT or build using the maven.
-2) Run using Java -jar (jarname)
+<Br/>1) Get the Jar from the target folder in GIT or build using the maven.
+<Br/>2) Run using Java -jar (jarname)
 
-Thats All.
+<Br/>Thats All.
 
 # Instructions - How To play
 1) Main menu has three options
