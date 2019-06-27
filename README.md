@@ -73,6 +73,8 @@ Welcome to the movie realm command line game where you can
 <Br/> Junits are fully built for all the functionality- It is at a healthy 80%
 <Br/> Code Comments are added whereever possbile to be self explanatory.
 
+Common Design Patterns used - Builder, Controller, Strategy , Memento
+
 <Br/> Dependencies used,
 <Br/> 1) powermock-module-junit4 - Junit- Static method mocking.
 <Br/> 2) powermock-api-mockito -Junit -  Using mockito for mock object handling.
