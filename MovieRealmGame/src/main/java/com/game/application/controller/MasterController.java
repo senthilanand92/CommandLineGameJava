@@ -1,29 +1,11 @@
 package com.game.application.controller;
 
+import com.game.application.constants.GameConstants;
 import com.game.application.model.Player;
 import com.game.application.utility.IOUtility;
 
-public class MasterController extends GameController{
-	//Need to move all controllers to a Singleton Resolver Class
+public class MasterController implements CommonController,GameConstants{
 	
-	private PlayGameController playerGameController = new PlayGameController();
-	
-	private ExploreController exploreController= new ExploreController();
-	
-	private FightController fightController = new FightController();
-	
-
-	public void playGame(Player player) {
-		playerGameController.playGame(player,this);
-	}
-	
-	public void exploreMap(Player player){
-		exploreController.exploreMap(player);
-	}
-	
-	public void fight(Player player){
-		fightController.fight(player);
-	}
 	
 	public void showLaunchOptions(){
 		// Show all the options 
@@ -68,30 +50,35 @@ public class MasterController extends GameController{
 			}
 		}while(isRetry);
 	}
+	public void playGame(Player player) {
+		PlayGameController playGameController=(PlayGameController) controllerResolver.getController("play");
+		playGameController.playGame(player,this);
+	}
 	
-
-
-	public PlayGameController getPlayerGameController() {
-		return playerGameController;
+	public void exploreMap(Player player){
+		ExploreController exploreController=(ExploreController) controllerResolver.getController("explore");
+		exploreController.exploreMap(player);
+	}
+	
+	public void fight(Player player){
+		FightController fightController= (FightController) controllerResolver.getController("fight");
+		fightController.fight(player);
+	}
+	
+	public Player newGame(){
+		GameController gameController= (GameController) controllerResolver.getController("gameState");
+		return gameController.newGame();
+	}
+	
+	public Player loadSavedGame(){
+		GameController gameController= (GameController) controllerResolver.getController("gameState");
+		return gameController.loadSavedGame();
+	}
+	
+	public void saveGame(Player player){
+		GameController gameController= (GameController) controllerResolver.getController("gameState");
+		 gameController.saveGame(player);
 	}
 
-	public void setPlayerGameController(PlayGameController playerGameController) {
-		this.playerGameController = playerGameController;
-	}
 
-	public ExploreController getExploreController() {
-		return exploreController;
-	}
-
-	public void setExploreController(ExploreController exploreController) {
-		this.exploreController = exploreController;
-	}
-
-	public FightController getFightController() {
-		return fightController;
-	}
-
-	public void setFightController(FightController fightController) {
-		this.fightController = fightController;
-	}
 }

@@ -38,6 +38,11 @@ public class GameControllerTest {
 		 exec=mock(GameOperationExecutor.class);
 		 when(IOUtility.getInstance()).thenReturn(utility);
 		 when(GameOperationExecutor.getInstance()).thenReturn(exec);
+		 PlayerCharacter pCharacter=new PlayerCharacter();
+		 pCharacter.setName("Senthil");
+		 Player gPlayer = new Player(pCharacter);
+		 
+		 when(exec.executeOperation(Mockito.any(GameControllerOperation.class), Mockito.any(Player.class), Mockito.any())).thenReturn(gPlayer);
 	}
 	
 	@Test
@@ -56,11 +61,8 @@ public class GameControllerTest {
 	
 	@Test
 	public void callMethodNew() throws InvalidInputException{
-		 PlayerCharacter pCharacter=new PlayerCharacter();
-		 pCharacter.setName("Senthil");
-		 Player gPlayer = new Player(pCharacter);
 		
-		 when(exec.executeOperation(Mockito.any(GameControllerOperation.class), Mockito.any(Player.class), Mockito.any())).thenReturn(gPlayer);
+		 
 		 boolean isEx=false;
 		 Player output=null;
 		 try{
@@ -75,11 +77,8 @@ public class GameControllerTest {
 	}
 	@Test
 	public void callMethodLoad() throws InvalidInputException{
-		 PlayerCharacter pCharacter=new PlayerCharacter();
-		 pCharacter.setName("Senthil");
-		 Player gPlayer = new Player(pCharacter);
+		 
 		
-		 when(exec.executeOperation(Mockito.any(GameControllerOperation.class), Mockito.any(Player.class), Mockito.any())).thenReturn(gPlayer);
 		
 		 boolean isEx=false;
 		 Player output=null;

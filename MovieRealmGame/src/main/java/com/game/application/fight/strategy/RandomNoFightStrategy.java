@@ -23,7 +23,7 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 			isRetry=false;
 		try{
 			utility.printOutput("You are attacking with a strength of "+player.getStrength());
-			utility.printOutput("Choose a no between 1 to 6.. :");
+			utility.printOutput("Choose a no between 0 to 6.. :");
 		Integer userInp=utility.getIntegerInput();
 		// Generating a random no
 		Integer randomNo=random.nextInt(7);

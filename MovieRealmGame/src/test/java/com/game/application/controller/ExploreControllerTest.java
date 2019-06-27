@@ -4,6 +4,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,8 +36,8 @@ public class ExploreControllerTest {
 		 PlayerCharacter pCharacter=new PlayerCharacter();
 		 pCharacter.setName("Senthil");
 		 player= new Player(pCharacter);
-		
-		
+		 
+		 
 	}
 	
 	@Test
@@ -43,6 +46,8 @@ public class ExploreControllerTest {
 		 IOUtility utility=mock(IOUtility.class);
 		 when(IOUtility.getInstance()).thenReturn(utility);
 		 boolean exceptionOccured=false;
+		
+		 when(utility.getStringInput()).thenReturn("N","S","E","w","Sw","Ex","bye");
 		 when(utility.getStringInput()).thenReturn("N","S","E","w","Sw","Ex","bye");
 		 try{
 			 controller.exploreMap(player);
@@ -50,9 +55,9 @@ public class ExploreControllerTest {
 		 catch(Throwable th){
 			 exceptionOccured=true;
 		 }
-		
 		 
 		 Assertions.assertThat(exceptionOccured).isEqualTo(false);
+		
 		
 	}
 	

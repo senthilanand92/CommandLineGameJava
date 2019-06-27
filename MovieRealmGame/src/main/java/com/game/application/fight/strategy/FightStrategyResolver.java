@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class FightStrategyResolver {
 	
-static FightStrategyResolver instance;
+static private FightStrategyResolver instance;
 	
 	private FightStrategyResolver(){
 		

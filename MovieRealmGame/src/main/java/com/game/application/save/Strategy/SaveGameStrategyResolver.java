@@ -2,7 +2,7 @@ package com.game.application.save.Strategy;
 
 public class SaveGameStrategyResolver {
 	
-	static SaveGameStrategyResolver instance;
+	static private SaveGameStrategyResolver instance;
 	
 	private SaveGameStrategyResolver(){
 		
