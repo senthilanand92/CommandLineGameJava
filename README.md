@@ -1,4 +1,4 @@
-# CommandLineGameJava - Movie Real.m
+# CommandLineGameJava - Movie Realm
 Welcome to the movie realm command line game where you can 
 1)Create your own character
 2)Explore the worlds of Marven and DC universe tracked in a map.
