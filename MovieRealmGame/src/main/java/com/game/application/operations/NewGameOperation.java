@@ -24,16 +24,16 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 			isRetry=false;
 			try{
 		utility.printOutput(newCharacterQuestions.get(0));
-		userInput = utility.getStringInputLine();	
+		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterName(userInput);
 		
 		utility.printOutput(newCharacterQuestions.get(1));
-		userInput = utility.getStringInputLine();	
+		userInput = utility.getStringInput();	
 		characterBuilder.setCharacterTitle(userInput);
 		boolean isInvalid=false;
 		do{
 		utility.printOutput(newCharacterQuestions.get(2));
-		userInput = utility.getStringInputLine();
+		userInput = utility.getStringInput();
 		isInvalid=true;
 		if(isInvalid)
 			utility.printOutput("Please enter either male or female");
@@ -52,7 +52,7 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 		{
 			utility.printOutput("Please enter either w or s");
 		}
-		userInput = utility.getStringInputLine();
+		userInput = utility.getStringInput();
 		isInvalid=true;
 			}while(! (userInput.equalsIgnoreCase("w")
 				|| userInput.equalsIgnoreCase("s")));
