@@ -29,7 +29,19 @@ public class IOUtility {
 	public String getStringInput() throws InvalidInputException{
 		String returnString="";
 		try{
-			returnString= input.next();
+			returnString= input.nextLine();
+		}
+		catch(Throwable t){
+			throw new InvalidInputException("Invalid Input");
+		}
+		
+		return returnString;
+	}
+	
+	public String getStringInputLine() throws InvalidInputException{
+		String returnString="";
+		try{
+			returnString= input.nextLine();
 		}
 		catch(Throwable t){
 			throw new InvalidInputException("Invalid Input");
@@ -41,7 +53,8 @@ public class IOUtility {
 	public void getAnyInput() {
 		printOutput("Press any Key to continue...");
 		try{
-			System.in.read();
+			 input.nextLine();
+			
 		}
 		catch(Throwable t){
 			printOutput("An Error has occured");
@@ -56,7 +69,7 @@ public class IOUtility {
 				   System.out.println("int, please!");
 				   input.nextLine();
 				}
-		returnInteger=input.nextInt();
+		returnInteger=Integer.valueOf(input.nextLine());
 		}
 		catch(Throwable t){
 			throw new InvalidInputException("Invalid Input");

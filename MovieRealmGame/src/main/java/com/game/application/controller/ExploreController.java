@@ -21,6 +21,7 @@ public class ExploreController  implements GameConstants,MapElements,CommonContr
 			try{
 			utility.printSeperator();
 			currentMap.printMap();
+			printMapLegend();
 			utility.printCommands(exploreOptions);
 			utility.printOutput(output);
 			utility.printOutput("Where to move:");
@@ -73,5 +74,12 @@ public class ExploreController  implements GameConstants,MapElements,CommonContr
 		}
 		}while(isNotExited);
 	}
+	
+	void printMapLegend(){
+		utility.printOutput("Legend: P-PLayer E-Exit .-Walkable Path E-Exit door \n"
+				+ "The letters are interesting places explore them");
+		
+	}
+	
 
 }

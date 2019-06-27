@@ -24,20 +24,38 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 			isRetry=false;
 			try{
 		utility.printOutput(newCharacterQuestions.get(0));
-		userInput = utility.getStringInput();	
+		userInput = utility.getStringInputLine();	
 		characterBuilder.setCharacterName(userInput);
 		
 		utility.printOutput(newCharacterQuestions.get(1));
-		userInput = utility.getStringInput();	
+		userInput = utility.getStringInputLine();	
 		characterBuilder.setCharacterTitle(userInput);
-		
+		boolean isInvalid=false;
+		do{
 		utility.printOutput(newCharacterQuestions.get(2));
-		userInput = utility.getStringInput();	
+		userInput = utility.getStringInputLine();
+		isInvalid=true;
+		if(isInvalid)
+			utility.printOutput("Please enter either male or female");
+		}
+		while(! (userInput.equalsIgnoreCase("male")
+				|| userInput.equalsIgnoreCase("female")));
+		
 		characterBuilder.setCharacterGender(userInput);
 		PlayerCharacter pCharacter = characterBuilder.buildCharacter();
 		
+		isInvalid=false;
+		do{
 		utility.printOutput(newCharacterQuestions.get(3));
-		userInput = utility.getStringInput();	
+		
+		if(isInvalid)
+		{
+			utility.printOutput("Please enter either w or s");
+		}
+		userInput = utility.getStringInputLine();
+		isInvalid=true;
+			}while(! (userInput.equalsIgnoreCase("w")
+				|| userInput.equalsIgnoreCase("s")));
 		// Warrior chosen
 		if(userInput.equalsIgnoreCase("W")){
 			builder = new WarriorBuilder();
@@ -60,7 +78,7 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 				utility.printOutput(ex.getMessage());
 				}
 				else{
-					utility.printOutput("That not a valid input,Lets try again");
+					utility.printOutput("Thats not a valid input,Lets try again");
 				}
 					
 			}
