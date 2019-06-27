@@ -13,9 +13,9 @@ Thats All.
 
 # Instructions - How To play
 1) Main menu has three options
-	1.1 New Game
-	1.2 Load Game
-	1.3 Exit Game
+	<Br/> 1.1 New Game
+	<Br/> 1.2 Load Game
+	<Br/> 1.3 Exit Game
 	
 	1.1- New Game - Create a new character
 		- Enter your name : (Thor)
@@ -37,10 +37,10 @@ Thats All.
 		- You have exited the game safely
 		
 2) Play Game has 4 Options
-	1.1 Explore
-	1.2 Fight
-	1.3 Save
-	1.4 Back
+	<Br/> 1.1 Explore
+	<Br/> 1.2 Fight
+	<Br/> 1.3 Save
+	<Br/> 1.4 Back
 	
 	1.1 Explore
 		- You will be taken to the Marvel Universe first(Fan Alert).
@@ -68,6 +68,16 @@ Thats All.
 
 Happy Playing . Raise an issue if you run into an error or spotted a bug . 
 
+# Instructions - Coders/Contributors
+
+Junits are fully built for all the functionality- It at a healthy 80%
+
+Dependencies used,
+1) powermock-module-junit4 - Junit- Static method mocking.
+2) powermock-api-mockito -Junit -  Using mockito for mock object handling.
+3) asertJ - Junit - Using for assertion in Junits
+
+
 Couple of feature I didn't have time to Code but can be Done
 1) Add more enemy
 2) Move all the message to propertie file with placeholders
@@ -76,6 +86,6 @@ Couple of feature I didn't have time to Code but can be Done
 5) Add a new  Fight Strategy- Let the Skill triumph over the gods of fate.
 6) Create more Maps
 7) Add Items in the map to intract with
-8) Add an optinal to pass in the save filename and location.
+8) Add an optional parameter -to pass in that gives the save filename and location.
 		
 		
