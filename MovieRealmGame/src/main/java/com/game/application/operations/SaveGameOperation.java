@@ -20,9 +20,10 @@ public class SaveGameOperation implements GameControllerOperation,GameConstants{
 		else{
 		    memento = new GameStateMemento(player,(String) parameter);
 		}
-		utility.printOutput("Saving game.."+memento);
+		utility.printOutput("Saving game..");
 		// Save the game
 		saveGameStrategy.saveGame(memento);
+		utility.printOutput("Game saved.");
 		
 		return player;
 	}

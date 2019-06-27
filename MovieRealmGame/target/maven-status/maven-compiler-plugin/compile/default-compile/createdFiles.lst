@@ -1,0 +1,9 @@
+com\game\application\builder\SimpleCharacterBuilder.class
+com\game\application\builder\player\WarriorBuilder.class
+com\game\application\model\PlayerCharacter.class
+com\game\application\model\GameStateMemento.class
+com\game\application\model\Player.class
+com\game\application\GameLauncher.class
+com\game\application\builder\CharacterBuilder.class
+com\game\application\builder\player\PlayerBuilder.class
+com\game\application\builder\player\SageBuilder.class

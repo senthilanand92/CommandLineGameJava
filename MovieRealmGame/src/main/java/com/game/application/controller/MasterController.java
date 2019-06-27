@@ -43,6 +43,10 @@ public class MasterController implements CommonController,GameConstants{
 				utility.printOutput("Thanks for Playing");
 				isRetry=false;
 			}
+			else{
+				utility.printOutput("Please enter a valid input.");
+				isRetry=true;
+			}
 			}
 			catch(Exception e){
 				utility.printOutput(e.getMessage());

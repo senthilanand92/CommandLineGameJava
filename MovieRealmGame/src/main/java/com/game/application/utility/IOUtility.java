@@ -38,17 +38,6 @@ public class IOUtility {
 		return returnString;
 	}
 	
-	public String getStringInputLine() throws InvalidInputException{
-		String returnString="";
-		try{
-			returnString= input.nextLine();
-		}
-		catch(Throwable t){
-			throw new InvalidInputException("Invalid Input");
-		}
-		
-		return returnString;
-	}
 	
 	public void getAnyInput() {
 		printOutput("Press any Key to continue...");
