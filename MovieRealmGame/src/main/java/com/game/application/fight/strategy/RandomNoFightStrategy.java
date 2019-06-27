@@ -23,11 +23,11 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 			isRetry=false;
 		try{
 			utility.printOutput("You are attacking with a strength of "+player.getStrength());
-			utility.printOutput("Choose a no between 0 to 6.. :");
+			utility.printOutput("Choose a number between 0 to 6.. :");
 		Integer userInp=utility.getIntegerInput();
 		// Generating a random no
 		Integer randomNo=random.nextInt(7);
-		utility.printOutput("The no was:"+randomNo);
+		utility.printOutput("The number was:"+randomNo);
 		boolean isAttackSuccessful=false;
 		// Cheat code 100 to beat the game
 		if(randomNo.equals(userInp) || userInp.equals(8055) ){
@@ -57,12 +57,12 @@ public class RandomNoFightStrategy implements FightStrategy,GameConstants {
 			isRetry=false;
 		try{
 		utility.printOutput("You are defending an attack by enemy whose strength is "+enemy.getStrength());
-		utility.printOutput("Choose a no between 0 to 6.. :");
+		utility.printOutput("Choose a number between 0 to 6.. :");
 		Integer userInp=utility.getIntegerInput();
 		// Generating a random no
 		Integer randomNo=random.nextInt(7);
 		boolean isDefenceSuccessful=false;
-		utility.printOutput("The no was:"+randomNo);
+		utility.printOutput("The number was:"+randomNo);
 		// Cheat code 100 to beat the game
 		if(randomNo.equals(userInp) || userInp.equals(8055)){
 			// Player successfully defended the attack

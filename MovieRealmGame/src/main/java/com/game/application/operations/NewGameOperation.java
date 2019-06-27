@@ -35,7 +35,8 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 		utility.printOutput(newCharacterQuestions.get(2));
 		userInput = utility.getStringInput();
 		isInvalid=true;
-		if(isInvalid)
+		if(isInvalid && ! (userInput.equalsIgnoreCase("male")
+				|| userInput.equalsIgnoreCase("female")))
 			utility.printOutput("Please enter either male or female");
 		}
 		while(! (userInput.equalsIgnoreCase("male")
@@ -48,7 +49,8 @@ public class NewGameOperation implements GameControllerOperation, GameConstants{
 		do{
 		utility.printOutput(newCharacterQuestions.get(3));
 		
-		if(isInvalid)
+		if(isInvalid && ! (userInput.equalsIgnoreCase("w")
+				|| userInput.equalsIgnoreCase("s")))
 		{
 			utility.printOutput("Please enter either w or s");
 		}
