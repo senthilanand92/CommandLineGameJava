@@ -70,7 +70,7 @@ Thats All.
 
 # Instructions - Coders/Contributors
 
-<Br/> Junits are fully built for all the functionality- It at a healthy 80%
+<Br/> Junits are fully built for all the functionality- It is at a healthy 80%
 <Br/> Code Comments are added whereever possbile to be self explanatory.
 
 <Br/> Dependencies used,
