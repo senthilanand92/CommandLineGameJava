@@ -27,7 +27,7 @@ Welcome to the movie realm command line game where you can
 		Warrior- health - 100 , Strength-100 , Experience - 5
 		Sage - health - 150 , Strength-50 , Experience - 10
 		
-		<Br/> After creation a new check point is automatically created and you enter the Movie Realm.
+	 After creation a new check point is automatically created and you enter the Movie Realm.
 		
 	<Br/> 1.2 Load Game
 		<Br/> - A List of previously saved games are displayed with player name , time stamp and serial no
